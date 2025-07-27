@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserScript Template - 油猴脚本开发模板</title>
+    <title>UserScript Template - 现代化油猴脚本开发模板</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -661,6 +661,228 @@
             padding: 10px;
         }
 
+        /* 顶部导航栏样式 */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #1a365d;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+        .navbar-brand:hover {
+            color: #4299e1;
+        }
+
+        .navbar-brand svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* JSREI 组织按钮样式 - 高冷专业风格 */
+        .jsrei-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: #e2e8f0;
+            border: 1px solid rgba(226, 232, 240, 0.1);
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.2),
+                0 1px 2px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .jsrei-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .jsrei-link:hover {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            transform: translateY(-1px);
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.25),
+                0 2px 6px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(226, 232, 240, 0.2);
+            color: #f7fafc;
+        }
+
+        .jsrei-link:hover::before {
+            opacity: 1;
+        }
+
+        .jsrei-link span {
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .jsrei-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        /* GitHub 徽标样式 */
+        .github-badge {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            background: #24292f;
+            color: #f0f6fc;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+
+        .github-badge:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .github-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: #24292f;
+        }
+
+        .github-info svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .github-info span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .github-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 8px;
+            background: #f6f8fa;
+            color: #24292f;
+            border-left: 1px solid #d1d9e0;
+        }
+
+        .github-stars svg {
+            width: 12px;
+            height: 12px;
+            fill: #656d76;
+        }
+
+        .github-stars span {
+            font-size: 12px;
+            font-weight: 600;
+            color: #24292f;
+        }
+
+        .github-badge[title] {
+            cursor: pointer;
+        }
+
+
+
+        /* 为页面内容添加顶部间距 */
+        body {
+            padding-top: 60px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .top-navbar {
+                padding: 0 20px;
+                height: 55px;
+            }
+
+            body {
+                padding-top: 55px;
+            }
+
+            .navbar-brand {
+                font-size: 1.1em;
+                gap: 8px;
+            }
+
+            .navbar-brand svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .navbar-links {
+                gap: 12px;
+            }
+
+            .navbar-link {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+
+            .navbar-link svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-link span {
+                display: none;
+            }
+
+            .navbar-link {
+                padding: 8px;
+            }
+        }
+
         /* 图片预览相关样式 */
         .image-preview-overlay {
             position: fixed;
@@ -958,17 +1180,52 @@
     </style>
 </head>
 <body>
+<!-- 顶部导航栏 -->
+<nav class="top-navbar">
+    <a href="#" class="navbar-brand">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>UserScript Template</span>
+    </a>
+
+    <div class="navbar-links">
+        <a href="https://jsrei.org/" target="_blank" class="jsrei-link">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+            </svg>
+            <span>JSREI组织首页</span>
+        </a>
+
+        <a href="https://github.com/JSREI/userscript-template" target="_blank" class="github-badge" title="Star me on GitHub">
+            <div class="github-info">
+                <svg viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                <span>Star</span>
+            </div>
+            <div class="github-stars">
+                <svg viewBox="0 0 16 16">
+                    <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                </svg>
+                <span id="navbar-star-count">...</span>
+            </div>
+        </a>
+    </div>
+</nav>
+
 <header>
     <h1>UserScript Template</h1>
-    <p>使用 Node.js + Webpack 模块化开发油猴脚本的高效方案</p>
+    <p>现代化油猴脚本开发模板 - 支持模块化开发、热加载、npm包管理</p>
     <div class="nav-container">
-        <nav>
-            <ul>
+    <nav>
+        <ul>
                 <li><a href="#features" class="active">核心特性</a>
-                <li><a href="#quick-start">快速开始</a></li>
+            <li><a href="#quick-start">快速开始</a></li>
+                <li><a href="#banner">Banner支持</a></li>
                 <li><a href="#usage">调试指南</a></li>
-            </ul>
-        </nav>
+        </ul>
+    </nav>
     </div>
 </header>
 
@@ -977,17 +1234,31 @@
         <h2>核心特性</h2>
         <div class="feature-grid">
             <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">
+                    <h3>一键创建项目</h3>
+                    <p>通过 npm 命令一键创建项目，无需手动配置，开箱即用</p>
+                </div>
+            </div>
+            <div class="feature-item">
                 <div class="feature-icon">📦</div>
                 <div class="feature-text">
                     <h3>模块化开发</h3>
-                    <p>不再需要在单个 JavaScript 文件中组织代码，而是采用WebPack模块化管理代码，提升开发体验与效率</p>
+                    <p>使用 Webpack 模块化管理代码，告别单文件开发的痛苦</p>
                 </div>
             </div>
             <div class="feature-item">
                 <div class="feature-icon">🔄</div>
                 <div class="feature-text">
                     <h3>热加载支持</h3>
-                    <p>开发时修改代码自动编译打包加载，让测试更高效</p>
+                    <p>开发时修改代码自动编译，实时预览效果</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-text">
+                    <h3>Banner 支持</h3>
+                    <p>支持自定义 ASCII 艺术字，让你的脚本更有个性</p>
                 </div>
             </div>
             <div class="feature-item">
@@ -997,11 +1268,11 @@
                     <p>打包后为高可读性的单文件，完全符合油猴商店上架政策</p>
                 </div>
             </div>
-            <div class="feature">
+            <div class="feature-item">
                 <div class="feature-icon">🚀</div>
                 <div class="feature-text">
                     <h3>发布友好</h3>
-                    <p>打包后生成高可读性的单文件脚本，完全符合油猴商店的上架要求，无需额外处理</p>
+                    <p>一键构建发布版本，无需额外处理即可上架</p>
                 </div>
             </div>
         </div>
@@ -1018,32 +1289,65 @@
             <ol class="steps">
                 <li>
                     <h3>创建项目</h3>
-                    <p>在 GitHub 模板仓库选择 "Use this template" 创建新仓库</p>
-                    <a href="https://github.com/JSREI/userscript-template" target="_blank" class="repo-link">
-                        <span class="text">
-                            <svg viewBox="0 0 16 16">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.82-1.02-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                            </svg>
-                            前往模板仓库
-                        </span>
-                        <span class="star-count">
-                            <svg viewBox="0 0 16 16">
-                                <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
-                            </svg>
-                            <span id="quick-start-star-count">Loading...</span>
-                        </span>
-                    </a>
-                    <img src="images/image-20230816233501101.png" alt="创建项目示例" class="demo-image">
-                </li>
-                <li>
-                    <h3>安装依赖</h3>
-                    <pre><code>git clone [你的仓库地址]
-cd [项目目录]
+                    <div class="tabs">
+                        <button class="tab-button active" data-tab="npm-create">npm 创建（推荐）</button>
+                        <button class="tab-button" data-tab="github-template">GitHub 模板</button>
+                    </div>
+
+                    <div class="tab-content active" data-tab="npm-create">
+                        <p><strong>推荐方式</strong> - 使用 npm 命令一键创建项目：</p>
+                        <pre><code># 使用 npm create（推荐）
+npm create @javascript-reverse-engineering-infrastructure/userscript my-userscript
+
+# 或者使用 npx
+npx @javascript-reverse-engineering-infrastructure/create-userscript my-userscript
+
+# 进入项目目录
+cd my-userscript
+
+# 安装依赖
 npm install</code></pre>
+                        <div class="note">
+                            <strong>优势：</strong> 自动配置所有必要文件，包括 webpack 配置、package.json、banner.txt 等，开箱即用！
+                        </div>
+                    </div>
+
+                    <div class="tab-content" data-tab="github-template">
+                        <p>在 GitHub 模板仓库选择 "Use this template" 创建新仓库</p>
+                        <a href="https://github.com/JSREI/userscript-template" target="_blank" class="repo-link">
+                            <span class="text">
+                                <svg viewBox="0 0 16 16">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.82-1.02-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                                </svg>
+                                前往模板仓库
+                            </span>
+                            <span class="star-count">
+                                <svg viewBox="0 0 16 16">
+                                    <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
+                                </svg>
+                                <span id="quick-start-star-count">Loading...</span>
+                            </span>
+                        </a>
+                        <img src="images/image-20230816233501101.png" alt="创建项目示例" class="demo-image">
+                    </div>
                 </li>
                 <li>
-                    <h3>启动热编译</h3>
-                    <p>在项目目录下运行以下命令启动开发服务：</p>
+                    <h3>开始开发</h3>
+                    <p>项目创建完成后，你就可以开始开发了！项目结构如下：</p>
+                    <pre><code>my-userscript/
+├── src/                 # 源代码目录
+│   ├── index.js        # 入口文件
+│   ├── foo_module/     # 示例模块
+│   └── bar_module/     # 示例模块
+├── dist/               # 编译输出目录
+├── banner.txt          # Banner 文件
+├── userscript-headers.js # 油猴脚本头部配置
+├── webpack.*.js        # Webpack 配置
+└── package.json        # 项目配置</code></pre>
+                </li>
+                <li>
+                    <h3>启动开发模式</h3>
+                    <p>在项目目录下运行以下命令启动开发服务，支持热重载：</p>
                     <div class="tabs">
                         <button class="tab-button active" data-tab="hot-watch">hot watch</button>
                         <button class="tab-button" data-tab="fuck-watch">fuck watch</button>
@@ -1135,6 +1439,57 @@ yarn install</code></pre>
                 </li>
             </ol>
         </div>
+    </div>
+
+    <div class="card" id="banner">
+        <h2>Banner 支持</h2>
+        <p>项目支持在编译后的代码中添加自定义 banner。在项目根目录的 <code>banner.txt</code> 文件中，你可以添加 ASCII 艺术字或其他装饰性文本。</p>
+
+        <h3>使用方法</h3>
+        <p>在项目根目录创建或编辑 <code>banner.txt</code> 文件：</p>
+        <pre><code>▗▄▄▄▖▗▖  ▗▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖▗▄▄▖ ▗▄▄▄▖▗▄▄▖▗▄▄▄▖
+  █   ▝▚▞▘ ▐▌ ▐▌▐▌   ▐▌   ▐▌   ▐▌ ▐▌  █  ▐▌ ▐▌ █
+  █    ▐▌  ▐▛▀▘ ▐▛▀▀▘ ▝▀▚▖▐▌   ▐▛▀▚▖  █  ▐▛▀▘  █
+  █    ▐▌  ▐▌   ▐▙▄▄▖▗▄▄▞▘▝▚▄▄▖▐▌ ▐▌▗▄█▄▖▐▌    █
+
+
+▗▖ ▗▖ ▗▄▄▖▗▄▄▄▖▗▄▄▖  ▗▄▄▖ ▗▄▄▖▗▄▄▖ ▗▄▄▄▖▗▄▄▖▗▄▄▄▖
+▐▌ ▐▌▐▌   ▐▌   ▐▌ ▐▌▐▌   ▐▌   ▐▌ ▐▌  █  ▐▌ ▐▌ █
+▐▌ ▐▌ ▝▀▚▖▐▛▀▀▘▐▛▀▚▖ ▝▀▚▖▐▌   ▐▛▀▚▖  █  ▐▛▀▘  █
+▝▚▄▞▘▗▄▄▞▘▐▙▄▄▖▐▌ ▐▌▗▄▄▞▘▝▚▄▄▖▐▌ ▐▌▗▄█▄▖▐▌    █
+
+
+▗▄▄▄▖▗▄▄▄▖▗▖  ▗▖▗▄▄▖ ▗▖    ▗▄▖▗▄▄▄▖▗▄▄▄▖
+  █  ▐▌   ▐▛▚▞▜▌▐▌ ▐▌▐▌   ▐▌ ▐▌ █  ▐▌
+  █  ▐▛▀▀▘▐▌  ▐▌▐▛▀▘ ▐▌   ▐▛▀▜▌ █  ▐▛▀▀▘
+  █  ▐▙▄▄▖▐▌  ▐▌▐▌   ▐▙▄▄▖▐▌ ▐▌ █  ▐▙▄▄▖</code></pre>
+
+        <h3>变量替换</h3>
+        <p>Banner 内容支持以下变量替换：</p>
+        <ul>
+            <li><code>${name}</code> - 项目名称</li>
+            <li><code>${version}</code> - 版本号</li>
+            <li><code>${description}</code> - 项目描述</li>
+            <li><code>${author}</code> - 作者信息</li>
+            <li><code>${repository}</code> - 仓库地址</li>
+            <li><code>${namespace}</code> - 命名空间</li>
+            <li><code>${document}</code> - 文档地址</li>
+        </ul>
+
+        <h3>编译后效果</h3>
+        <p>编译时，banner 内容会被自动插入到油猴脚本头部注释中：</p>
+        <pre><code>// ==UserScript==
+// @name         my-project
+// @version      1.0.0
+// ...
+// ==/UserScript==
+
+//    ▗▄▄▄▖▗▖  ▗▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖ ▗▄▄▖▗▄▄▖ ▗▄▄▄▖▗▄▄▖▗▄▄▄▖
+//      █   ▝▚▞▘ ▐▌ ▐▌▐▌   ▐▌   ▐▌   ▐▌ ▐▌  █  ▐▌ ▐▌ █
+//      █    ▐▌  ▐▛▀▘ ▐▛▀▀▘ ▝▀▚▖▐▌   ▐▛▀▚▖  █  ▐▛▀▘  █
+//      █    ▐▌  ▐▌   ▐▙▄▄▖▗▄▄▞▘▝▚▄▄▖▐▌ ▐▌▗▄█▄▖▐▌    █
+
+// 你的代码...</code></pre>
     </div>
 
     <div class="card" id="usage">
@@ -1245,21 +1600,60 @@ yarn install</code></pre>
 </div>
 
 <script>
-    // 获取仓库 star 数并更新到所有显示位置
-    fetch('https://api.github.com/repos/JSREI/userscript-template')
-        .then(response => response.json())
-        .then(data => {
-            const starCount = data.stargazers_count.toLocaleString();
-            // 更新页面中所有显示 star 数的元素
-            document.querySelectorAll('[id$="star-count"]').forEach(el => {
-                el.textContent = starCount;
-            });
-        })
-        .catch(() => {
-            document.querySelectorAll('[id$="star-count"]').forEach(el => {
-                el.textContent = 'N/A';
-            });
+    // GitHub Star 数缓存管理
+    const CACHE_KEY = 'github_stars_cache';
+    const CACHE_DURATION = 60 * 60 * 1000; // 1小时缓存
+
+    function getCachedStarCount() {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+            const { data, timestamp } = JSON.parse(cached);
+            if (Date.now() - timestamp < CACHE_DURATION) {
+                return data;
+            }
+        }
+        return null;
+    }
+
+    function setCachedStarCount(starCount) {
+        const cacheData = {
+            data: starCount,
+            timestamp: Date.now()
+        };
+        localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+    }
+
+    function updateStarCount(starCount) {
+        // 更新页面中所有显示 star 数的元素
+        document.querySelectorAll('[id$="star-count"]').forEach(el => {
+            el.textContent = starCount;
         });
+    }
+
+    // 获取仓库 star 数
+    function fetchStarCount() {
+        // 先检查缓存
+        const cachedStarCount = getCachedStarCount();
+        if (cachedStarCount) {
+            updateStarCount(cachedStarCount);
+            return;
+        }
+
+        // 缓存过期或不存在，从 API 获取
+        fetch('https://api.github.com/repos/JSREI/userscript-template')
+            .then(response => response.json())
+            .then(data => {
+                const starCount = data.stargazers_count.toLocaleString();
+                updateStarCount(starCount);
+                setCachedStarCount(starCount);
+            })
+            .catch(() => {
+                updateStarCount('N/A');
+            });
+    }
+
+    // 页面加载时获取 star 数
+    fetchStarCount();
 
     // 导航栏激活状态
     const navLinks = document.querySelectorAll('nav a');
